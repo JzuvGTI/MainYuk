@@ -99,7 +99,7 @@ export function summarizeFriends(friends: Friend[]) {
 }
 
 export function statusLabel(status: AttendanceStatus) {
-  if (status === "ready") return "Ready";
-  if (status === "not_ready") return "Not Ready";
-  return "Belum";
+  if (status === "ready") return "Aman";
+  if (status === "not_ready") return "Bermasalah";
+  return "Belum Lapor";
 }

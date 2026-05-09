@@ -103,12 +103,12 @@ export function FriendStatusForm({ friend }: FriendStatusFormProps) {
       <section className="phone-shell">
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-bold text-slate-500">MainYuk</p>
+            <p className="text-sm font-bold text-slate-500">Jasa Hapus Dosa</p>
             <h1 className="mt-1 text-3xl font-black text-slate-950">Halo, {friend.name}</h1>
             <p className="mt-1 text-sm font-medium text-slate-500">Isi status kamu saja</p>
           </div>
           <Link
-            href="/main"
+            href="/"
             className="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm"
           >
             Rekap
@@ -162,7 +162,7 @@ export function FriendStatusForm({ friend }: FriendStatusFormProps) {
               onClick={() => setStatus("ready")}
               type="button"
             >
-              Ready
+              Aman
             </button>
             <button
               className={`focus-ring rounded-2xl px-4 py-4 text-base font-black transition ${
@@ -172,14 +172,14 @@ export function FriendStatusForm({ friend }: FriendStatusFormProps) {
               onClick={() => setStatus("not_ready")}
               type="button"
             >
-              Not Ready
+              Bermasalah
             </button>
           </div>
 
           {status === "not_ready" ? (
             <div className="mt-4">
               <label className="mb-2 block text-sm font-bold text-slate-700" htmlFor="reason">
-                Alasan Not Ready
+                Alasan Bermasalah
               </label>
               <textarea
                 id="reason"
@@ -187,7 +187,7 @@ export function FriendStatusForm({ friend }: FriendStatusFormProps) {
                 onChange={(event) => setReason(event.target.value)}
                 className="focus-ring min-h-24 w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-semibold text-slate-950"
                 disabled={!verified || loading}
-                placeholder="Contoh: masih kerja, belum pasti, ada urusan"
+                placeholder="Contoh: Belum mandi, lagi gibah, dll"
               />
             </div>
           ) : null}

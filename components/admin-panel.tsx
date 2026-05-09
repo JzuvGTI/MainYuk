@@ -6,10 +6,40 @@ import Link from "next/link";
 import { DEFAULT_FRIENDS } from "@/lib/attendance";
 
 export function AdminPanel() {
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const [adminPin, setAdminPin] = useState("");
   const [selectedSlug, setSelectedSlug] = useState<string>(DEFAULT_FRIENDS[0].slug);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  if (!isAuthorized) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-slate-50 px-4">
+        <div className="w-full max-w-sm rounded-3xl border border-slate-200 bg-white p-8 shadow-xl shadow-slate-200/50">
+          <div className="mb-6 text-center">
+            <h1 className="text-2xl font-black text-slate-950">Admin Login</h1>
+            <p className="mt-2 text-sm font-medium text-slate-500">Masukkan PIN Admin untuk melanjutkan</p>
+          </div>
+          <input
+            autoFocus
+            type="password"
+            inputMode="numeric"
+            placeholder="PIN"
+            className="focus-ring w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-4 text-center text-2xl font-black tracking-widest text-slate-950"
+            value={adminPin}
+            onChange={(e) => {
+              const val = e.target.value;
+              setAdminPin(val);
+              if (val === "1234") {
+                setIsAuthorized(true);
+              }
+            }}
+          />
+          <p className="mt-6 text-center text-xs font-bold text-slate-400">Jasa Hapus Dosa</p>
+        </div>
+      </main>
+    );
+  }
 
   async function submit(path: string, payload: Record<string, string>) {
     setLoading(true);
@@ -36,12 +66,12 @@ export function AdminPanel() {
       <section className="phone-shell">
         <div className="mb-5 flex items-start justify-between gap-4">
           <div>
-            <p className="text-sm font-bold text-slate-500">MainYuk</p>
+            <p className="text-sm font-bold text-slate-500">Jasa Hapus Dosa</p>
             <h1 className="mt-1 text-3xl font-black text-slate-950">Admin</h1>
             <p className="mt-1 text-sm font-medium text-slate-500">Reset harian dan PIN teman</p>
           </div>
           <Link
-            href="/main"
+            href="/"
             className="focus-ring rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 shadow-sm"
           >
             Rekap
